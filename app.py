@@ -6,7 +6,7 @@ import json
 st.set_page_config(page_title="Generador de Ensayos", page_icon="📝", layout="wide")
 
 # Título de la aplicación
-st.title("Generador de Ensayos Académicos Fluidos")
+st.title("Generador de Ensayos Académicos")
 
 # Entrada de la tesis
 thesis = st.text_area("Ingrese la tesis para el ensayo:", height=100)
@@ -26,7 +26,7 @@ if st.button("Generar Ensayo"):
             "Content-Type": "application/json"
         }
         
-        # Prompt refinado para el modelo
+        # Prompt para el modelo
         prompt = f"""Desarrolla un ensayo académico fluido y cohesivo sobre la siguiente tesis:
 
 {thesis}
@@ -75,8 +75,7 @@ Genera un ensayo que siga estas directrices, manteniendo una estructura coherent
             response.raise_for_status()
             essay = response.json()['choices'][0]['text']
             
-            # Mostrar el ensayo generado
-            st.subheader("Ensayo Generado:")
+            # Mostrar el ensayo generado sin encabezado adicional
             st.markdown(essay)
         except requests.exceptions.RequestException as e:
             st.error(f"Error al generar el ensayo: {e}")
