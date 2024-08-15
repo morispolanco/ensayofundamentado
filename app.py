@@ -41,7 +41,7 @@ Asegúrate de que el ensayo esté bien estructurado, con transiciones suaves ent
 
         # Datos para la solicitud
         data = {
-            "model": "mistral-7b-instruct-v0.1",
+            "model": "togethercomputer/llama-2-70b-chat",
             "prompt": prompt,
             "max_tokens": 2048,
             "temperature": 0.7,
