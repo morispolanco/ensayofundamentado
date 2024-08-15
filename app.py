@@ -18,7 +18,7 @@ if st.button("Generar Ensayo"):
         api_key = st.secrets["TOGETHER_API_KEY"]
         
         # URL de la API de Together
-        url = "https://api.together.xyz/inference"
+        url = "https://api.together.xyz/v1/completions"
         
         # Headers para la solicitud
         headers = {
@@ -53,15 +53,17 @@ Asegúrate de que el ensayo esté bien estructurado, con transiciones suaves ent
         
         # Realizar la solicitud a la API
         try:
-            response = requests.post(url, headers=headers, data=json.dumps(data))
+            response = requests.post(url, headers=headers, json=data)
             response.raise_for_status()
-            essay = response.json()['output']['choices'][0]['text']
+            essay = response.json()['choices'][0]['text']
             
             # Mostrar el ensayo generado
             st.subheader("Ensayo Generado:")
             st.markdown(essay)
         except requests.exceptions.RequestException as e:
             st.error(f"Error al generar el ensayo: {e}")
+            if response.text:
+                st.error(f"Respuesta de la API: {response.text}")
     else:
         st.warning("Por favor, ingrese una tesis antes de generar el ensayo.")
 
