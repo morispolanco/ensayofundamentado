@@ -6,7 +6,7 @@ import json
 st.set_page_config(page_title="Generador de Ensayos", page_icon="📝", layout="wide")
 
 # Título de la aplicación
-st.title("Generador de Ensayos con Citas")
+st.title("Generador de Ensayos con Citas Integradas")
 
 # Entrada de la tesis
 thesis = st.text_area("Ingrese la tesis para el ensayo:", height=100)
@@ -26,18 +26,28 @@ if st.button("Generar Ensayo"):
             "Content-Type": "application/json"
         }
         
-        # Prompt para el modelo
-        prompt = f"""Escribe un ensayo largo y detallado sobre la siguiente tesis:
+        # Prompt mejorado para el modelo
+        prompt = f"""Escribe un ensayo académico detallado y bien estructurado sobre la siguiente tesis:
 
 {thesis}
 
-El ensayo debe incluir:
-1. Una introducción que presente la tesis.
-2. Al menos 3 argumentos principales que apoyen la tesis.
-3. 15 citas relevantes de autores reconocidos en el campo.
-4. Una conclusión que resuma los puntos principales y reafirme la tesis.
+Instrucciones para el ensayo:
 
-Asegúrate de que el ensayo esté bien estructurado, con transiciones suaves entre las secciones y un flujo lógico de ideas."""
+1. Comienza con una introducción que presente la tesis de manera clara y atractiva.
+
+2. Desarrolla el cuerpo del ensayo con múltiples párrafos que apoyen la tesis. Cada párrafo debe presentar un argumento o idea principal que respalde la tesis.
+
+3. Integra naturalmente 15 citas relevantes de autores reconocidos a lo largo del texto. Las citas deben reforzar los argumentos y estar bien contextualizadas.
+
+4. Asegúrate de que haya transiciones suaves y lógicas entre los párrafos, creando un flujo coherente de ideas.
+
+5. Concluye el ensayo resumiendo los puntos principales y reafirmando la tesis de manera convincente.
+
+6. El estilo de escritura debe ser académico, pero accesible, evitando jerga innecesaria.
+
+7. No uses subtítulos ni numeración explícita de argumentos. El ensayo debe fluir como un texto continuo y cohesivo.
+
+Genera un ensayo que cumpla con estas instrucciones, manteniendo un tono académico y una estructura coherente a lo largo del texto."""
 
         # Datos para la solicitud
         data = {
@@ -73,7 +83,7 @@ st.sidebar.write("""
 1. Ingrese la tesis para su ensayo en el campo de texto.
 2. Haga clic en el botón "Generar Ensayo".
 3. El ensayo generado aparecerá debajo del botón.
-4. El ensayo incluirá una introducción, argumentos principales, 15 citas relevantes y una conclusión.
+4. El ensayo incluirá una introducción, argumentos bien desarrollados con citas integradas, y una conclusión.
 """)
 
 # Nota sobre la API key
